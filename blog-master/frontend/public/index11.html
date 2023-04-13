@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+    <title>Пример магазина</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootstrap5.ru/css/docs.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        .product-wrapper {
+            display: run-in;
+            position: relative;
+            border: 10px solid #56382d;
+
+          
+    
+            float: left;
+            transition: width .2s;
+        }
+
+        @media only screen and (min-width: 450px) {
+            .product-wrapper {
+                width: 50%;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .product-wrapper {
+                width: 33.333%;
+            }
+        }
+
+        @media only screen and (min-width: 1000px) {
+            .product-wrapper {
+                width: 25%;
+            }
+        }
+
+        .product {
+            display: block;
+            border: 1px solid #b5e9a7;
+            border-radius: 3px;
+            position: relative;
+            background: #fff;
+            margin: 10px -20px 20px 0;
+            text-decoration: none;
+            color: #474747;
+            z-index: 0;
+            height: 200px;
+        }
+
+        body {
+            background: #b8b2b2;
+        }
+
+        .gradient-button {
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            padding: 20px 30px;
+            margin: 10px 20px;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-image: linear-gradient(to right, #4d978b 0%, #4830F0 51%, #9EEFE1 100%);
+            background-size: 200% auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+            transition: .5s;
+        }
+
+        .gradient-button:hover {
+            background-position: right center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-7 py-4">
+                            <h4 class="text-white">О нас</h4>
+                            <p class="text-muted">Интернет магазин женских вещей. Мы работаем для красоты!</p>
+                        </div>
+                        <div class="col-sm-4 offset-md-1 py-4">
+                            <h4 class="text-white">Связаться с нами</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-white">Следуйте в Twitter</a></li>
+                                <li><a href="#" class="text-white">Лайк в Facebook</a></li>
+                                <li><a href="#" class="text-white">Email</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"
+                            class="mr-2" Посмотретьbox="0 0 24 24">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                            </path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                        <strong>fakestore</strong>
+                    </a>
+                    <form class="d-flex">
+                        <input v-model="searth" class="form-control mr-2" type="search" placeholder="Поиск"
+                            aria-label="Search">
+                    </form>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <ul class="products clearfix">
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://static.lichi.com/product/44906/8d61ac09bd92ba48dec5dc1171b0901d.jpg?v=0_44906.0&resize=size-middle"
+                        width="250" height="300">
+                    <div class="product-list">
+                        <b>
+                            <p title="Элегантное платье на шикарный вечер">Маленькое черное платье</p>
+                        </b>
+                        <span class="price">₽ 1999</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://tvoe.ru/img/3getvkh/product/626/834/36/4620123739951-5.jpg" width="250"
+                        height="300" margin-left: 20px;>
+                    <div class="product-list">
+                        <b>
+                            <p title="На прогулку с друзьями или отдых на природе">Худи</p>
+                        </b>
+
+                        <span class="price">₽ 2999</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://www.charuel.ru/upload/resize_cache/iblock/73f/445_445_1/%D0%92%D0%AB%D0%9F%D0%90%D0%94%D0%90%D0%A8%D0%9A%D0%90.jpg"
+                        width="250" height="300">
+                    <div class="product-list">
+                        <b>
+                            <p title="Для деловых встреч">Жакет</p>
+                        </b>
+                        <span class="price">₽ 4999</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://www.sh-vova.ru/images/blog/6771103707_2_1_1.jpg" width="250" height="300">
+                    <div class="product-list">
+                        <b>
+                            <p title="Для холодных вечеров">Свитер</p>
+                        </b>
+                        <span class="price">₽ 3999</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://savage.ru/upload/resize_cache/iblock/0fc/428_570_2/1x393qzigxhl5cdisxyjzr8fz9fdq48t.jpg"
+                        width="250" height="300">
+                    <div class="product-list">
+                        <b>
+                            <p title="Для работы">Пиджак</p>
+                        </b>
+                        <span class="price">₽ 5999</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://imgcdn.zarina.ru/upload/images/32245/thumb/450_9999/3224521441_17_1.jpg?t=1678805192"
+                        width="250" height="300">
+                    <div class="product-list">
+                        <b>
+                            <p title="Для спорта">Бомбер</p>
+                        </b>
+                        <span class="price">₽ 2999</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://n1s1.hsmedia.ru/d1/2c/60/d12c60b627e76637a952adf08ff4e280/1571x2251_0xac120003_11685279561615829515.jpg"
+                        width="250" height="300">
+                    <div class="product-list">
+                        <b>
+                            <p title="Для деловых встреч">Костюм</p>
+                        </b>
+                        <span class="price">₽ 6000</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+            <li class="product-wrapper">
+                <div class="product-item">
+                    <img src="https://krasotka.cc/wp-content/uploads/2019/01/249899674_125072236585069_7203621124129512814_n.jpg"
+                        width="250" height="300">
+                    <div class="product-list">
+                        <b>
+                            <p title="Для жаркого времени года">Топ</p>
+                        </b>
+                        <span class="price">₽ 999</span>
+                        <a href="" class="gradient-button">В корзину</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <footer class="text-muted py-5">
+            <div class="container">
+                <p class="float-right mb-1">
+                    <a href="#">Наверх</a>
+                </p>
+                <p class="mb-1">Адрес магазина</p>
+                <p class="mb-0">Описание <a href="/">Реклама <a href="docs/getting-started/introduction">руководство по
+                            началу работы</a>.</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            computed: {
+                result() {
+                    return this.tovary.find(tovar => (tovar.title.indexOf(this.searth) != -1))?.title
+                },
+                filteredTovary() {
+                    return this.tovary.filter(tovar => ((tovar.title.indexOf(this.searth) != -1) && (tovar.category == this.currentCategory || this.currentCategory == 'all')))
+                },
+            },
+            data: {
+                tovary: [],
+                categories: [],
+                currentCategory: 'all',
+                searth: ''
+            },
+            methods: {
+                download() {
+                    axios.get('https://fakestoreapi.com/products',)
+                        .then((response) => {
+                            this.tovary = response.data
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                    axios.get('https://fakestoreapi.com/products/categories',)
+                        .then((response) => {
+                            response.data.unshift('all')
+                            this.categories = response.data
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                },
+                selectCat(cat) {
+                    this.currentCategory = cat
+                }
+            },
+            created() {
+                this.download()
+            }
+        })
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
