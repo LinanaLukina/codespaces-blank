@@ -3,13 +3,14 @@
     <br>
     
     <b-nav tabs align ='center'>
-      <b-nav-item @click="contact = null; searchMode=false">Все товары</b-nav-item>
-      <b-nav-item @click="addContact">Найти товар</b-nav-item>
+      <b-nav-item  @click="contact = null; searchMode=false">Все услуги</b-nav-item>
+      <b-nav-item @click="addContact">Найти услугу</b-nav-item>
     </b-nav>
+    <img  src="https://pitbox.ru/wp-content/uploads/2015/08/pokraska-avto.jpg" alt="Альтернативный текст" width="1250" height="250">
 
     <hr>
     <div v-if="!searchMode">
-    <h3 v-if="contacts.length > 0">Все товары</h3>
+    <h3 align ='center' v-if="contacts.length > 0">Все услуги</h3>
     <b-table striped hover :items="contacts" @row-clicked="contactClick"></b-table>
   </div>
 
