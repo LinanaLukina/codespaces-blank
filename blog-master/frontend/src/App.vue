@@ -20,7 +20,6 @@
     </b-list>
   </b-form>
   </div>
-  <
 </template>
 <script>
 export default {
